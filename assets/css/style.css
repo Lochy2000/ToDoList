@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars */
+    background-color: #f0f0f0; /* Background color for the entire page */
+}
+
+.container {
+    background-color: #22f6cf54;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(148, 9, 161, 0.788);
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+#status {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#todo-input {
+    background-color: #70b9bc38;
+    font-weight: 700;
+}
+#todo-inpute input {
+    color: #ea9079;
+}
+
+/* Styles for the animated circles */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(160deg, #635e5c 0%, #573278 25%,#9970bc 50%, #f0d785 65%,#3462ed 75%, #3b4344 100%);
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Move behind other content */
+    pointer-events: none; /* Allows clicks to pass through to underlying elements */
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background-image:linear-gradient(140deg, #ea9079 0%, #9970bc 50%, #f56c6c 75%, #864af6 100%); /* Adjust color and opacity as needed */
+    /* Randomize initial positions and animation */
+    left: calc(var(--start-x) * 100%);
+    top: calc(var(--start-y) * 100%);
+    width: 50px;
+    height: 50px;
+    animation: moveCircle linear infinite;
+    animation-duration: calc(var(--duration) * 60s); /* Randomize animation duration */
+    animation-delay: calc(var(--delay) * -1s); /* Randomize animation delay */
+}
+
+/* Generate random properties for each circle */
+.circle:nth-child(1) {
+    --start-x: -0.2;
+    --start-y: 0.1;
+    --end-x: 1.2;
+    --end-y: 0.9;
+    --duration: 0.6;
+    --delay: 0.2;
+}
+.circle:nth-child(2) {
+    --start-x: 1.2;
+    --start-y: 0.3;
+    --end-x: -0.2;
+    --end-y: 0.6;
+    --duration: 0.8;
+    --delay: 0.5;
+}
+.circle:nth-child(3) {
+    --start-x: -0.1;
+    --start-y: 0.7;
+    --end-x: 1.1;
+    --end-y: 0.2;
+    --duration: 1.2;
+    --delay: 0.8;
+}
+.circle:nth-child(4) {
+    --start-x: 1.1;
+    --start-y: 0.4;
+    --end-x: -0.1;
+    --end-y: 0.8;
+    --duration: 0.9;
+    --delay: 0.1;
+}
+.circle:nth-child(5) {
+    --start-x: -0.3;
+    --start-y: 0.2;
+    --end-x: 1.3;
+    --end-y: 0.4;
+    --duration: 1.0;
+    --delay: 0.6;
+}
+.circle:nth-child(6) {
+    --start-x: 1.3;
+    --start-y: 0.8;
+    --end-x: -0.3;
+    --end-y: 0.3;
+    --duration: 0.7;
+    --delay: 0.4;
+}
+.circle:nth-child(7) {
+    --start-x: -0.2;
+    --start-y: 0.5;
+    --end-x: 1.2;
+    --end-y: 0.1;
+    --duration: 1.1;
+    --delay: 0.3;
+}
+.circle:nth-child(8) {
+    --start-x: 1.2;
+    --start-y: 0.9;
+    --end-x: -0.2;
+    --end-y: 0.6;
+    --duration: 0.5;
+    --delay: 0.7;
+}
+.circle:nth-child(9) {
+    --start-x: -0.1;
+    --start-y: 0.6;
+    --end-x: 1.1;
+    --end-y: 0.4;
+    --duration: 1.3;
+    --delay: 0.9;
+}
+.circle:nth-child(10) {
+    --start-x: 1.1;
+    --start-y: 0.5;
+    --end-x: -0.1;
+    --end-y: 0.3;
+    --duration: 1.5;
+    --delay: 0.2;
+}
+
+@keyframes moveCircle {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(calc(var(--end-x) * 100vw - var(--start-x) * 100vw), calc(var(--end-y) * 100vh - var(--start-y) * 100vh)) rotate(720deg);
+    }
+}
